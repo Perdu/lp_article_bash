@@ -1,0 +1,16 @@
+# grep
+"\eg": '\C-a\C-kgrep -r "" .\C-b\C-b\C-b'
+# dernier fichier modifié
+"\e:": '\\\'$(latest)\\\' \e\C-e'
+# Naviguer dans l'historique
+"\e[1;5A": history-search-backward
+"\e[1;5B": history-search-forward
+"\ej": "\C-a\C-kjobs -sl\n" # voir les jobs en arrière-plan
+"\es": "\C-p\C-asudo \C-e" # ajouter "sudo" à la dernière commande
+"\ep": '\C-a\C-kps aux | grep -i ""\C-b' # chercher un processus dans les processus en cours
+"\ei": "\C-a\C-kssh -t machine LANG=fr_FR.UTF-8 tmux attach\C-m" # se connecter en SSH à une machine et ouvrir sa sessi
+on tmux en un seul raccourci !
+"\eF": '\C-a\C-kfind . -iname "**" | tee >(tr -d \'\\n\' | xclip)\C-a\ef\ef\C-f\C-f\C-f' # Chercher des fichiers par nom, et coller les résultats dans le presse-papier au passage
+"\eh": '\C-a\C-khistory | grep \'\'\C-b' # chercher une commande dans l'historique
+"\em": '\C-a\C-kmake\C-m' # Lancer make. Très agréable !
+"\ea": ' \\\'$(ls | dmenu)\\\'\e\C-e' # utiliser dmenu pour sélectionner un fichier dans le dossier courant. Pratique pour récupérer des noms de fichier complexes
